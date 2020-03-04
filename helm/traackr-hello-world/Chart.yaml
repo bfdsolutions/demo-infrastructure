@@ -1,0 +1,11 @@
+apiVersion: v2
+name: traackr-hello-world
+description: A demo chart to see if I can actually do this 
+
+type: application
+
+version: 1.0.0
+
+appVersion: latest
+
+icon: https://secure.gravatar.com/avatar/51ce259a04ce7922814b21e3847d119c.jpg
