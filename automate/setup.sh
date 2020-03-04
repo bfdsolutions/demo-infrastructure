@@ -4,7 +4,6 @@ PASS="\342\234\224"
 FAIL="\xE2\x9D\x8C"
 PRECHECK=1
 CHECK=1
-INSTALL_PATH="/tmp"
 
 printf "Locating required utilities..\n"
 
@@ -21,14 +20,6 @@ if ! [ -x "$(command -v kubectl)" ]; then
   PRECHECK=0
 else
   printf "$PASS kubernetes installed\n"
-fi
-
-if ! [ -x "$(command -v docker)" ]; then
-  printf "$FAIL docker not installed\n"
-  printf "please install before continuing\n"
-  PRECHECK=0
-else
-  printf "$PASS docker installed\n"
 fi
 
 if ! [ -x "$(command -v helm)" ]; then
@@ -54,7 +45,7 @@ fi
 
 if [ $CHECK -eq 1 ]; then 
   printf "installing charts with helm..\n"
-  HELM_INSTALL1=$(helm install traackr-hello-world  ./helm/traackr-hello-world/)
+  HELM_INSTALL1=$(helm install traackr-hello-world  ../helm/traackr-hello-world/)
   HELM_INSTALL2=$(helm install ingress-traackr-hello-world stable/traefik --set dashboard.enabled=true,dashboard.domain=dashboard.localhost)
   printf "waiting for pods to be ready..\n"
   while true ; do 
